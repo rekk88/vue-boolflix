@@ -1,6 +1,6 @@
 <template>
-  <div class="header_wrapper">
-      header
+  <div class="header_wrapper container-fluid">
+      <input type="text" placeholder="inserisci un titolo">
   </div>
 </template>
 
@@ -11,6 +11,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "bootstrap";
     .header_wrapper{
         height: 70px;
         background: #2c3e50;
