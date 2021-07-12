@@ -1,16 +1,16 @@
 <template>
   <div class="main_wrapper container">
       Main
-      <Cards/>
+      <Card/>
   </div>
 </template>
 
 <script>
-import Cards from './components/Cards.vue'
+import Card from './Card.vue'
 export default {
     name: 'Main',
     components: {
-        Cards
+        Card
     }
 }
 </script>
