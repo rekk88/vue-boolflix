@@ -1,10 +1,11 @@
 <template>
   <div class="card_wrapper">
         <li>
+          <div><img :src=locandina alt=""></div>
           <div>{{ type }}</div>
-           <div>titolo originale: {{title}}</div> 
-           <div> <img :src=path alt="immagine"></div> 
-           <div>voto : {{voto}}</div> 
+          <div>titolo originale: {{title}}</div> 
+          <div> <img :src=path alt="immagine"></div> 
+          <div>voto : {{voto}}</div> 
         </li>      
   </div>
   
@@ -23,7 +24,8 @@ export default {
       originalLanguage:String,
       title : String,
       voto: Number,
-      type: String
+      type: String,
+      locandina:String
     },
     methods:{
 

@@ -5,19 +5,19 @@
   <div class="main_wrapper container">
       Main
         <Card v-for="element in film" :key="element.id" 
+            :locandina="'https://image.tmdb.org/t/p/w300/'+element.backdrop_path"
             :title="element.title"
             :type="'Film'"
             :originalLanguage="element.original_language"
             :voto="element.vote_average"
         /> 
-      <!-- <div  v-if="series.length" > -->
         <Card v-for="element2 in series" :key="element2.id" 
-          :title="element2.original_name"
-          :type="'Serie'"
-          :originalLanguage="element2.original_language"
-          :voto="element2.vote_average" 
+            :locandina="'https://image.tmdb.org/t/p/w300/'+element2.backdrop_path"
+            :title="element2.original_name"
+            :type="'Serie'"
+            :originalLanguage="element2.original_language"
+            :voto="element2.vote_average" 
         />
-        <!-- </div> -->
   </div>
 </template>
 
