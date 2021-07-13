@@ -1,7 +1,9 @@
 <template>
   <div class="main_wrapper container">
       Main
-      <Card v-for="element in film" :key="element.id" :francesco="element"/>
+      <Card v-for="element in film" :key="element.id" :film2="element"/>
+      <Card v-for="element in series" :key="element.id" :francesco="element"/>
+
   </div>
 </template>
 
@@ -12,7 +14,7 @@ export default {
     components: {
         Card
     },
-    props:["film"]
+    props:["film","series"] //le prop in arrivo da app.vue
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="header_wrapper container-fluid d-flex justify-content-center align-items-center">
-      <input type="text" placeholder="inserisci un titolo"  v-model="ricerca" class="mx-2" @keyup.enter="$emit('getFilmsEmit',ricerca)">
-      <button type="button" class="btn btn-secondary" @click="$emit('getFilmsEmit',ricerca)">Cerca</button>
+      <input type="text" placeholder="inserisci un titolo"  v-model="ricerca" class="mx-2" @keyup.enter="$emit('getFilmsEmit',ricerca); $emit('getTvEmit',ricerca)">
+      <button type="button" class="btn btn-secondary" @click="$emit('getFilmsEmit',ricerca) ; $emit('getTvEmit',ricerca)">Cerca</button>
   </div>
 </template>
 
