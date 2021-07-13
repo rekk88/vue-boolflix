@@ -7,7 +7,7 @@
 
 <script>
 import axios from 'axios';
-
+import {eventBus} from '../main.js'
 export default {
     name:"Header",
     components:{
@@ -19,6 +19,7 @@ export default {
             page:"1",
             url: "https://api.themoviedb.org/3/search/movie?api_key=75ebf4a5bf0762d3887d0146d0d76336&query=",
             films : "",
+            film:{},
         }
     },
     methods:{
@@ -31,17 +32,27 @@ export default {
             axios
                 .get(this.url)
                 .then(response =>{
-                    console.log(response);
-                    console.log(response.data.total_pages);
-                    console.log(response.data.results.length);
+                    // console.log(response);
+                    // console.log(response.data.total_pages);
+                    // console.log(response.data.results.length);
                     console.log(response.data.results[0]);
                     this.films=response.data.results;
-                    // console.log(this.films.title);s
+                    console.log(this.films);
+                    this.film ={
+                        title : response.data.results[0].title,
+                        original_title: response.data.results[0].original_title,
+                        original_language: response.data.results[0].original_language,
+                        vote_average: response.data.results[0].vote_average,
+                    }
+                    // console.log(this.films.title);
                     // console.log("films :  ",this.films);
-                    
+                    console.log(this.film);
+                    eventBus.$emit('bus',this.film);
                 })
+            //reset variabili di ricerca e url
             this.ricerca="";
             this.url="https://api.themoviedb.org/3/search/movie?api_key=75ebf4a5bf0762d3887d0146d0d76336&query=";
+
         }
     }
 }
