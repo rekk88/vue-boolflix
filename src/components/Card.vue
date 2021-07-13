@@ -4,7 +4,7 @@
         <li>
           <div>titolo : {{francesco.title}}</div>
           <div>titolo originale: {{francesco.original_title}}</div>
-          <div>lingua originale : {{francesco.original_language}} <img :src="'../assets/images/'+francesco.original_language+'.png'" alt="immagine"></div>
+          <div> <img :src=path alt="immagine"></div>
           <div>voto : {{francesco.vote_average}}</div>
           <!-- <div><img src="https://www.countryflags.io/be/flat/64.png" alt="flag"></div> -->
         </li>
@@ -18,20 +18,7 @@ export default {
     name:'Cards',
     data() {
       return {
-        flags :[
-          {
-            language : "en",
-            flag:"",
-          },
-          // {
-          //   language : "",
-          //   flag:"",
-          // },
-          // {
-          //   language : "",
-          //   flag:"",
-          // },
-        ]
+        path : require('@/assets/images/'+this.francesco.original_language+'.png')
       }
     },
     props:{
@@ -41,7 +28,6 @@ export default {
     //   this.$nextTick(this.getFilm())
     // },
     updated(){
- 
     },
     methods:{
 
