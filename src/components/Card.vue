@@ -1,11 +1,14 @@
 <template>
   <div class="card_wrapper">
         <li>
-          <div><img :src=locandina alt=""></div>
+          <div><img :src=locandina alt="Immagine non disponibile"></div>
           <div>{{ type }}</div>
           <div>titolo originale: {{title}}</div> 
           <div> <img :src=path alt="immagine"></div> 
-          <div>voto : {{voto}}</div> 
+          <div>voto : {{calcoloVoto(voto)}} 
+            <i v-for="index in calcoloVoto(voto)" :key="index" class="fas fa-star"></i>
+            <i v-for="index in (5-calcoloVoto(voto))" :key="index" class="far fa-star"></i>
+          </div> 
         </li>      
   </div>
   
@@ -28,8 +31,11 @@ export default {
       locandina:String
     },
     methods:{
-
-    }
+      calcoloVoto(voto){
+        // console.log("voto :" , voto);
+        return Math.round(voto / 2)
+      }
+    },
     
 }
 
