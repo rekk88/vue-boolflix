@@ -25,9 +25,9 @@ export default {
     return {
       page:"1",
       urlFilm: "https://api.themoviedb.org/3/search/movie?api_key=75ebf4a5bf0762d3887d0146d0d76336&query=",
-      films : "",
+      films : [],
       urlTV:"https://api.themoviedb.org/3/search/tv?api_key=75ebf4a5bf0762d3887d0146d0d76336&query=",
-      series:""
+      series:[]
     }
   },
   methods:{
@@ -41,7 +41,7 @@ export default {
                 .then(response =>{
                   
                     this.films=response.data.results;
-                    console.log(this.films);
+                    console.log("film : ",this.films);
                     
                 })
             //reset variabili di ricerca e urlFilm
