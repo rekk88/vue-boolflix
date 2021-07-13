@@ -1,12 +1,11 @@
 <template>
   <div class="header_wrapper container-fluid d-flex justify-content-center align-items-center">
-      <input type="text" placeholder="inserisci un titolo"  v-model="ricerca" class="mx-2">
-      <button type="button" class="btn btn-secondary" @click="getFilms">Cerca</button>
+      <input type="text" placeholder="inserisci un titolo"  v-model="ricerca" class="mx-2" @keyup.enter="$emit('getFilmsEmit',ricerca)">
+      <button type="button" class="btn btn-secondary" @click="$emit('getFilmsEmit',ricerca)">Cerca</button>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
 import {eventBus} from '../main.js'
 export default {
     name:"Header",
@@ -15,45 +14,17 @@ export default {
     },
     data() {
         return {
-            ricerca:"",
-            page:"1",
-            url: "https://api.themoviedb.org/3/search/movie?api_key=75ebf4a5bf0762d3887d0146d0d76336&query=",
-            films : "",
-            film:{},
+            ricerca:""
         }
     },
-    methods:{
-        getFilms(){
-            console.log("ciao");
-            this.films="";
-            // console.log("text ricerca : ",this.ricerca);
-            this.url = this.url + this.ricerca;
-            // console.log("url get : ",this.url);
-            axios
-                .get(this.url)
-                .then(response =>{
-                    // console.log(response);
-                    // console.log(response.data.total_pages);
-                    // console.log(response.data.results.length);
-                    console.log(response.data.results[0]);
-                    this.films=response.data.results;
-                    console.log(this.films);
-                    this.film ={
-                        title : response.data.results[0].title,
-                        original_title: response.data.results[0].original_title,
-                        original_language: response.data.results[0].original_language,
-                        vote_average: response.data.results[0].vote_average,
-                    }
-                    // console.log(this.films.title);
-                    // console.log("films :  ",this.films);
-                    console.log(this.film);
-                    eventBus.$emit('bus',this.film);
-                })
-            //reset variabili di ricerca e url
-            this.ricerca="";
-            this.url="https://api.themoviedb.org/3/search/movie?api_key=75ebf4a5bf0762d3887d0146d0d76336&query=";
+    updated(){
+            eventBus.$emit('aggiorna',"testo aggiornato");
+            console.log("testo aggiornato");
+            // return this.ricerca
 
-        }
+    },
+    methods:{
+       
     }
 }
 </script>

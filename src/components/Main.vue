@@ -1,7 +1,7 @@
 <template>
   <div class="main_wrapper container">
       Main
-      <Card/>
+      <Card v-for="element in film" :key="element.id" :francesco="element"/>
   </div>
 </template>
 
@@ -11,7 +11,8 @@ export default {
     name: 'Main',
     components: {
         Card
-    }
+    },
+    props:["film"]
 }
 </script>
 
