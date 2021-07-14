@@ -1,15 +1,16 @@
 <template>
-  <div class="card_wrapper" v-if="popularity > 10 && path!= null">
+  <div class="card_wrapper" v-if="(path != null) && (title != null)">
         <li>
           <div><img :src=locandina alt="Immagine non disponibile"></div>
           <div>{{ type }}</div>
           <div>titolo : {{title}}</div> 
           <div v-if="originalTitle != title">titolo originale : {{originalTitle}}</div>
           <div> <img :src="require('@/assets/images/'+this.originalLanguage+'.png')" alt="immagine"></div> 
-          <div>voto : {{calcoloVoto(voto)}} 
+          <div>
+            voto : {{calcoloVoto(voto)}} 
             <i v-for="index in calcoloVoto(voto)" :key="index" class="fas fa-star"></i>
             <i v-for="index in (5-calcoloVoto(voto))" :key="index" class="far fa-star"></i>
-          </div> 
+          </div>
         </li>      
   </div>
   
