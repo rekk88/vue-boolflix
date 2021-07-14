@@ -2,7 +2,7 @@
   <div class="card_wrapper col" v-if="(path != null) && (title != null)">
     <div class="card">
           <img class="card-img-top" :src=locandina alt="Immagine non disponibile">
-          <div class="testo card-body">
+          <div class="card-body">
             <div>{{ type }}</div>
             <div>titolo : {{title}}</div> 
             <div v-if="originalTitle != title">titolo originale : {{originalTitle}}</div>
@@ -50,15 +50,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.testo{
-  display: none;
+.card-body{
+  // display: none;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  width:100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0;
+  transition: linear .2s;
 }
 
 .card{
   height: 100%;
+  &:hover{
+    .card-body{
+      visibility:visible;
+      opacity: 0.8;
+    }
+  }
   .card-img-top{
     height: 100%;
-
   }
 }
 </style>
