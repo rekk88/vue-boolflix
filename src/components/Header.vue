@@ -20,8 +20,6 @@ export default {
         }
     },
     updated(){
-            // eventBus.$emit('aggiorna',"testo aggiornato");
-            // console.log("testo aggiornato");
             // this.$emit('getFilmsEmit',this.ricerca); 
             // this.$emit('getTvEmit',this.ricerca)
 
@@ -35,7 +33,7 @@ export default {
 <style lang="scss" scoped>
     .header_wrapper{
         height: 70px;
-        background: #111213;
+        background-color: #111213;
         .logo_wrapper{
             font-size: 2rem;
             color: #e50914;

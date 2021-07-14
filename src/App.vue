@@ -60,7 +60,7 @@ export default {
 
           })
         this.ricerca="";
-        this.urlTV="https://api.themoviedb.org/3/search/movie?api_key=75ebf4a5bf0762d3887d0146d0d76336&query=";
+        this.urlTV="https://api.themoviedb.org/3/search/tv?api_key=75ebf4a5bf0762d3887d0146d0d76336&query=";
         
       }
   }
@@ -74,6 +74,5 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 </style>
