@@ -5,15 +5,17 @@
   <div class="main_wrapper container">
       Main
         <Card v-for="element in film" :key="element.id" 
-            :locandina="'https://image.tmdb.org/t/p/w300/'+element.backdrop_path"
+            :locandina="'https://image.tmdb.org/t/p/w342/'+element.backdrop_path"
             :title="element.title"
+            :originalTitle="element.original_title"
             :type="'Film'"
             :originalLanguage="element.original_language"
             :voto="element.vote_average"
         /> 
         <Card v-for="element2 in series" :key="element2.id" 
-            :locandina="'https://image.tmdb.org/t/p/w300/'+element2.backdrop_path"
+            :locandina="'https://image.tmdb.org/t/p/w342/'+element2.backdrop_path"
             :title="element2.original_name"
+            :originalTitle="element2.original_name"
             :type="'Serie'"
             :originalLanguage="element2.original_language"
             :voto="element2.vote_average" 
@@ -28,7 +30,8 @@ export default {
     components: {
         Card
     },
-    props:["film","series"] //le prop in arrivo da app.vue
+      //      :originalTitle="element.original_title"
+    props:["film","series"] //le prop in arrivo da app.vue 
 }
 </script>
 

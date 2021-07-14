@@ -3,7 +3,8 @@
         <li>
           <div><img :src=locandina alt="Immagine non disponibile"></div>
           <div>{{ type }}</div>
-          <div>titolo originale: {{title}}</div> 
+          <div>titolo : {{title}}</div> 
+          <div v-if="originalTitle != title">titolo originale : {{originalTitle}}</div>
           <div> <img :src=path alt="immagine"></div> 
           <div>voto : {{calcoloVoto(voto)}} 
             <i v-for="index in calcoloVoto(voto)" :key="index" class="fas fa-star"></i>
@@ -26,6 +27,7 @@ export default {
     props:{
       originalLanguage:String,
       title : String,
+      originalTitle: String,
       voto: Number,
       type: String,
       locandina:String
