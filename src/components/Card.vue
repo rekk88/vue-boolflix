@@ -21,7 +21,6 @@ export default {
     name:'Cards',
     data() {
       return {
-        // path : require('@/assets/images/'+this.originalLanguage+'.png')
       }
     },
     props:{
