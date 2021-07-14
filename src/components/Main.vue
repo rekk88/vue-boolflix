@@ -6,19 +6,23 @@
       Main
         <Card v-for="element in film" :key="element.id" 
             :locandina="'https://image.tmdb.org/t/p/w342/'+element.backdrop_path"
+            :path=element.backdrop_path
             :title="element.title"
             :originalTitle="element.original_title"
             :type="'Film'"
             :originalLanguage="element.original_language"
             :voto="element.vote_average"
+            :popularity="element.popularity"
         /> 
         <Card v-for="element2 in series" :key="element2.id" 
             :locandina="'https://image.tmdb.org/t/p/w342/'+element2.backdrop_path"
+            :path=element2.backdrop_path
             :title="element2.original_name"
             :originalTitle="element2.original_name"
             :type="'Serie'"
             :originalLanguage="element2.original_language"
             :voto="element2.vote_average" 
+            :popularity="element2.popularity"
         />
   </div>
 </template>
