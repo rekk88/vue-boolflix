@@ -1,14 +1,11 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <Header @getFilmsEmit="getFilms" @getTvEmit="getTV"/>
     <Main :film="films" :series="series"/>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
 import Header from './components/Header.vue'
 import Main from './components/Main.vue'
 import axios from 'axios'
@@ -16,7 +13,6 @@ import axios from 'axios'
 export default {
   name: 'App',
   components: {
-    // HelloWorld
     Header,
     Main
 
@@ -33,16 +29,12 @@ export default {
   methods:{
       getFilms(ricerca){
             console.log("Film");
-            // console.log("text ricerca : ",this.ricerca);
             this.urlFilm = this.urlFilm + ricerca;
-            // console.log("urlFilm get : ",this.urlFilm);
             axios
                 .get(this.urlFilm)
                 .then(response =>{
-                  
                     this.films=response.data.results;
                     console.log("film : ",this.films);
-                    
                 })
             //reset variabili di ricerca e urlFilm
             this.ricerca="";

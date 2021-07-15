@@ -8,19 +8,19 @@
             <div v-if="originalTitle != title">titolo originale : {{originalTitle}}</div>
             <div> <img :src="require('@/assets/images/'+this.originalLanguage+'.png')" alt="immagine"></div> 
             <div>
-              <!-- voto : {{calcoloVoto(voto)}}  -->
               <i v-for="index in calcoloVoto(voto)" :key="index" class="fas fa-star"></i>
               <i v-for="index in (5-calcoloVoto(voto))" :key="index" class="far fa-star"></i>
             </div>
             <div>
-              {{idProva}}  <!--debug-->
               {{descrizione}}
             </div>
             <div v-if="cast.length > 0"><h4 class="mt-2">Cast</h4></div>
             <div class="cast" v-for="(p,index) in cast.slice(0 , 5)" :key="index">
-
               {{p.name}}
             </div>
+            <!-- <div v-for="(gen,index) in generi" :key="index">
+              {{this.gen}}
+            </div> -->
           </div>
     </div>    
   </div>
@@ -36,37 +36,67 @@ export default {
       return {
         idProva : this.id,
         cast : "",
+        genresTv: [],
+        genresMovie: [],
+        // visualizzaGen:[],
       }
     },
     props:{
-      id : Number, 
-      originalLanguage: String,
-      title : String,
+      id : Number,  //id del film/serieTV
+      generi : Array, //array generi della singola card
+      originalLanguage: String, 
+      title : String, 
       originalTitle: String,
       descrizione : String,
       voto: Number,
       popularity:Number,
-      type: String,
+      type: String, //tv / movie
       locandina: String,
-      path: String
+      path: String //parte finale del path name per la locandina
     },
     methods:{
       calcoloVoto(voto){
         // console.log("voto :" , voto);
         return Math.round(voto / 2)
       },
-    },
 
+      // generiTest(){
+      //   console.log("ciao");
+      //   console.log(this.genresTv);
+      //   this.genresTv.forEach((element,i) =>{
+      //        if( (this.type == "tv") && (element == this.generi[i])){
+      //         console.log(this.generi[i]);
+      //        }
+      //   })
+     
+      // },
+    },
+    created(){
+      //genres ids array per film e serie tv {id : numero , name :"genereX"}
+      axios
+        .all([
+          axios.get("https://api.themoviedb.org/3/genre/movie/list?api_key=75ebf4a5bf0762d3887d0146d0d76336"),
+          axios.get("https://api.themoviedb.org/3/genre/tv/list?api_key=75ebf4a5bf0762d3887d0146d0d76336"),
+
+        ])
+        .then(axios.spread((genresTvResponse , genresMovieResponse) =>{
+          this.genresTv = genresTvResponse.data.genres;
+          this.genresMovie = genresMovieResponse.data.genres;
+          console.log(this.genresTv);
+          console.log(this.genresMovie);
+          // this.generiTest();
+        }));
+    },
     mounted(){
+      //cast getter
       let urlCast = "https://api.themoviedb.org/3/"+this.type+"/"+this.id+"/credits?api_key=75ebf4a5bf0762d3887d0146d0d76336"
       console.log(urlCast);
       axios
         .get(urlCast)
         .then(response =>{
-          console.log(response.data.cast);
+          // console.log(response.data.cast);
           this.cast=response.data.cast;
         })
-
     }
     
 }

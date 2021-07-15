@@ -8,25 +8,13 @@
 </template>
 
 <script>
-// import {eventBus} from '../main.js'
 export default {
     name:"Header",
-    components:{
-
-    },
     data() {
         return {
             ricerca:""
         }
     },
-    updated(){
-            // this.$emit('getFilmsEmit',this.ricerca); 
-            // this.$emit('getTvEmit',this.ricerca)
-
-    },
-    methods:{
-       
-    }
 }
 </script>
 
