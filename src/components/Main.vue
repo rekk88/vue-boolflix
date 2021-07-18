@@ -3,7 +3,8 @@
     delle propietà è diverso , devo prima andare a scomporre l'oggetto e passare
     le propietà tramite props e NON l'oggetto per intero  -->
 
-    <!-- push di prova secondo push di prova-->
+    <!-- push di prova secondo push di ddsd prova-->
+    
   <div class="main_wrapper container py-3">
         <div class="row row-cols-3 gy-2">
             <Card v-for="(element,index) in film" :key="index" 
